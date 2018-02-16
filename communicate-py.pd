@@ -1,0 +1,33 @@
+#N canvas 937 124 742 604 10;
+#X obj 67 50 phasor~ 440;
+#X obj 86 185 r volume;
+#X obj 86 216 / 100;
+#X obj 86 246 pack 0 5;
+#X obj 86 273 line~;
+#X obj 68 305 *~;
+#X obj 68 338 dac~;
+#X obj 307 78 r audio_on_off;
+#X msg 307 134 \; pd dsp \$1 \;;
+#X text 445 79 Turn DSP on and off;
+#X text 453 203 Receive messages from Python and route them to the
+proper recieve objects in the patch;
+#X obj 308 208 netreceive 3000;
+#X obj 308 241 route 0 1;
+#X obj 308 276 s audio_on_off;
+#X obj 446 276 s volume;
+#X obj 272 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 307 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 5 0 6 0;
+#X connect 7 0 16 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 12 1 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 8 0;
